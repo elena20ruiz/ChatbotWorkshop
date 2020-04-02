@@ -11,19 +11,49 @@ Los pasos a seguir para crear un chatbot són los siguientes:
 
 ## 1. Crear un agente
 
+Para crear un agente simplemente se le ha indicar:
+
+- El nombre
+- El idioma que queremos que utilize
+- La franja horaria
+- (Opcional) Enlazarlo con un proyecto de Google Cloud
+
 ![Create an agent with DialogFlow](images/createAgent.PNG)
 
+Una vez creados, veremos que existen dos intents por defecto:
+- **Default Fallback Intent**: Salta cuando el chatbot no ha interpretado ningún intent.
+- **Default Welcome Intent**: Responde con un saludo.
+
+Ambos no se pueden eliminar ya que se consideran esenciales para el flujo del chatbot.
 
 ## 2. Crear un intent
 
-### Contexto
+Al crear un nuevo intent, a parte de definir un nombre, nos encontramos con los siguientes apartados:
 
-### Parametros
+![Create an intent with DialogFlow](images/createIntent.PNG)
 
-### Utterances / Frases de entrenamiento
+### Training Phrases
+
+Las frases de entrenamiento son las frases con las que el chatbot se entrenará para indexar esas frases con el `intent` definido. De esta manera cuando el usuario escriba una frase similar identificará el intent concreto. 
+
+Ejemplo de _training phrases:_
+
+![Add training phrases to DialogFlow](images/trainingPhrases.PNG)
 
 ### Respuestas
 
+![Text responses on DialogFlow](images/responses.PNG)
+
+
+### Contexto
+
+
+### Parametros
+
+
+### Fulfillment
+
+![Activate fulfillment on DialogFlow](images/fulfillment.PNG)
 
 ## 3. Crear un entity
 
