@@ -18,7 +18,7 @@ Para crear un agente simplemente se le ha indicar:
 - La franja horaria
 - (Opcional) Enlazarlo con un proyecto de Google Cloud
 
-![Create an agent with DialogFlow](images/createAgent.PNG =150x)
+![Create an agent with DialogFlow](images/createAgent.PNG | height=20)
 
 Una vez creados, veremos que existen dos intents por defecto:
 - **Default Fallback Intent**: Salta cuando el chatbot no ha interpretado ningún intent.
