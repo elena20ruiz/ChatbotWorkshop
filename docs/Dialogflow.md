@@ -93,21 +93,44 @@ De esta manera nos queda un único parametro que contiene la siguiente informaci
 
 Se pueden añadir parametros manualmente pero al detectar Dialogflow este parametro se han puesto los anteriores valores por defecto. 
 
-- **Required**: Indica si es necesario que el intent haya de tener ese parametro.
+- **Required**: Indica si es necesario que el intent haya de tener ese parametro. En el caso de que sea un parametro necesario podemos añadir un 'prompt' para que el usuario dé esa información necesaria.
 - **Parameter name**: Es el nombre del parametro con el que luego se accedera al contenido.
 - **Entity**: El tipo de entidad que existen por defecto algunas entidades del sistema que se pueden elegir desde allí o si es necesario podemos crear uno personalizado (y que se explcará en los siguientes apartados).
 - **Value**: Es el nombre del índice que se indexa en las frases de entrenamiento. (La o las palabras que estan subrayadas de un color).
-- **Is list**
+- **Is list** Activar si esperamos una lista de valores. Por ejemplo: `Ponme una alarma a las 10 y a las 12`. El parametro será un array con dos elementos: `[ "2020-04-04T10:00:00+02:00", "2020-04-04T11:00:00+02:00" ]`
 
 En resumen: **Definiremos un parametro para cada información variable que queremos guardar o tratar.**
 
 ### Contexto
 
+Estos parametros de entrada y salida permiten controlar el flujo de una conversación. En este workshop no se aprofundirá sobre el tema pero podeis informaros en el siguiente [enlace](https://cloud.google.com/dialogflow/docs/contexts-input-output?hl=es-419)
 
-### Parametros
+A nivel general hay que saber que los contextos permiten detectar mejor un intent cuando varios intents diferentes tienen frases de entrenamiento iguales o cuando requiere una información previa para continuar.
 
+Un ejemplo:
+
+![Context on dialogflow](https://cloud.google.com/dialogflow/docs/images/contexts-overview.svg?hl=es-419)
+
+Los contextos que veremos serán los relacionados con los `prompts` a la hora de utilizar parametros que sean necesarios.
+
+### Eventos
+
+`Normalmente, se detecta una coincidencia con un intent cuando una expresión de usuario final se corresponde con una frase de entrenamiento de intent. Sin embargo, también puedes activar intents mediante eventos.`[3](https://cloud.google.com/dialogflow/docs/events-overview?hl=es-419)
+
+En estos casos los eventos dependerán de donde está integrado el chatbot. Existe una lista de eventos que están implementados y que podemos elegir. Todo y así, podemos crear eventos personalizados mediante su API [enlace](https://cloud.google.com/dialogflow/docs/events-custom?hl=es-419).
 
 ## 3. Crear un entity
+
+Tal y como hemos visto en el apartado de `Actions y parameters` durante la creación de un intento, todo parametro se le ha de asignar una entidad. Existen muchas entidades predeterminadas por Dialogflow como puede ser: `country`, `city`, `date`, `email`, `url` ....
+
+Todo y así es posible que necesitemos crear una entidas personalizada para casos concretos, esta entidad se puede simplicifar a un diccionario finito de entradas donde cada entrada puede contener sinónimos.
+
+Por ejemplo, si nuestro chatbot genera recetas a partir de los ingredientes que el usuario indica, necesitaremos esos ingredientes como parametros. Y aquí surgen dos hechos:
+- Necesito una entidad que cubra solo los ingretientes que el backend puede llegar a tratar.
+- Necesito relacionar diferentes palabras con un mismo concepto a partir de sinónimos. Por ejemplo, una receta con `papas` será de la misma forma que si digo `patatas`. 
+
+
+![Entity](images/entity.PNG)
 
 ## 4. Implementar lógica del chatbot a partir del fulfillment
 
