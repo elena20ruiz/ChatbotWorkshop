@@ -162,7 +162,3 @@ app.intent(FALLBACK_INTENT, (conv) => {
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 ```
-
-## 5. Entrenar el chatbot y testearlo
-
-## 6. Integrarlo
