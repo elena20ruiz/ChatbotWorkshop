@@ -134,6 +134,35 @@ Por ejemplo, si nuestro chatbot genera recetas a partir de los ingredientes que 
 
 ## 4. Implementar lógica del chatbot a partir del fulfillment
 
+El backend de Dialogflow puede ser hosteado en un servidor propis utilizando la API de Dialogflow, de manera que puede ser implementado por el lenguaje preferido y tiene menos limitaciones.
+
+Otra opción que nos facilita Dialogflow para hacer cosas más sencillas sin necesitar un servidor propio es utilizando el `Inline editor`. Este editor nos encapsula un pequeño código que puede interaccionar con la información que recibe y manda Dialogflow, esta implementado en `Node.js` y tiene la siguiente estructura:
+
+```
+const functions = require('firebase-functions');
+const { dialogflow } = require('actions-on-google');
+
+// INTENTS
+const WELCOME_INTENT = 'Default Welcome Intent';
+const FALLBACK_INTENT = 'Default Fallback Intent';
+
+
+const app = dialogflow();
+
+app.intent(WELCOME_INTENT, (conv) => {
+  conv.ask('Welcome to Joke Chatbot! Ask for a joke. I will try to make you laught');
+});
+
+
+app.intent(FALLBACK_INTENT, (conv) => {
+  conv.ask('Sorry I didin\'t understand you. Try to say: tell me a joke');
+});
+
+
+
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
+```
+
 ## 5. Entrenar el chatbot y testearlo
 
 ## 6. Integrarlo
